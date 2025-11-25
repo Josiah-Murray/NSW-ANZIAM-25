@@ -6,3 +6,83 @@
     margin-right: auto;
     margin-bottom: 0.5rem;
 }
+
+.SolutionStepBox {
+    border-radius: 1rem;
+    padding: 0.5rem;
+    display: grid; 
+    grid-template-columns: auto auto auto auto;     justify-content: center;
+    margin-left: auto; 
+    margin-right: auto;
+}
+.SolutionStepBox div{
+    margin: 0.5rem;
+    width: 18rem; 
+    height: 15rem; 
+    text-align: center;
+    background-color: var(--r-link-color);
+    padding:0.5rem;
+    border-radius: 1rem;;
+}
+
+.NILapExample {
+    width: 20rem;
+    height: 15rem;
+    background-color: var(--r-link-color);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1rem;
+    padding: 0.5rem;
+    font-weight: bold;
+}
+
+.NILapExample h2{
+    font-size: 1.7rem;
+}
+
+.NILapExample p{
+    margin-top: 0.2rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.InversionList {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.InversionList div div {
+    width: 20rem;
+    height: 25rem;
+    background-color: var(--r-main-color);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem;
+
+}
+
+.InversionList div div ul {
+    font-size: 1.4rem;
+    color: black;
+}
+.InversionList div div p {
+    color: black;
+    font-size: 2rem;
+}
+.InversionList div img {
+    max-width: 20rem;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    background-color: white;
+}

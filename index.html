@@ -59,15 +59,6 @@
 							Talk through the model briefly. Should the diagram move?
 						</aside>
 					</section>
-
-					<section>
-						Pictures of other applications
-
-						<aside class="notes">
-							But, of course, the same techniques I'll mention today can be applied (sometimes without modification) to various other applications
-						</aside>
-
-					</section>
 					
 
 
@@ -76,15 +67,15 @@
 				<!--Solution process-->
 				<section>
 					
-					<section>
-						<h5>To find the Laplace domain solution:</h5>
-						<div style="display: grid; grid-template-columns: auto auto auto auto; background-color: #d5d3cb; align-items: center; justify-content: center;">
-							<div style="width: 15rem; height: 15rem; background-color: red; text-align: center;">
+					<section data-auto-animate="">
+						<h5>Laplace domain solution:</h5>
+						<div class="SolutionStepBox">
+							<div >
 								<p style="font-size: 1.5rem;">1. Split domain</p>
-								<video data-autoplay loop controls src="Videos/0001-0090.mkv" style="border-radius: 1rem;"></video>
+								<video data-autoplay loop controls src="Videos/0001-0090.mkv" style="border-radius: 1rem; object-fit: fill; width: 17rem;"></video>
 							</div>
 
-							<div style="width: 15rem; height: 15rem; background-color: red; text-align: center; align-items: center;">
+							<div>
 								<p style="font-size: 1.5rem;">2. Apply Laplace transform</p>
 								<p style="font-size: 0.7rem; text-align: center;">
 						\[EI\partial_x^4 y + m\partial_t^2 y + C(x) \partial_t y + k(x)y = \delta(x-vt)\]
@@ -94,10 +85,10 @@
 								
 							</div>
 
-							<div style="width: 15rem; height: 15rem; background-color: red; text-align: center;">
+							<div>
 								<p style="font-size: 1.5rem;">3. Solve ODE in $x$</p>
 								<p style="font-size: 1rem;"> 
-									Apply ansatz $e^{r(s)x}$ giving characteristic equation
+									Apply ansatz $e^{r(s)x}$ giving characteristic polynomial
 									\[EIr^4 + (ms^2 + Cs + k) = 0,\]
 									and search for particular solutions of the form 
 									$Ae^{B x}$
@@ -105,7 +96,7 @@
 								
 							</div>
 
-							<div style="width: 15rem; height: 15rem; background-color: red; text-align: center;">
+							<div>
 								<p style="font-size: 1.5rem;">4. Solve for unknown coefficients</p>
 								<p style="font-size: 1rem;"> 
 									Enforce continuity of function and derivatives in $x$. This results in a linear system for the unknown coefficients in each region.
@@ -119,7 +110,7 @@
 						</div>
 
 						
-						<p style="font-size: 1rem; margin-top: 2rem; color: black; background-color: var(--r-main-color); padding: 1rem; border-radius: 1rem; text-shadow: none;">
+						<p data-id="LDS" style="font-size: 1rem; margin-top: 2rem; color: black; background-color: var(--r-main-color); padding: 1rem; border-radius: 1rem; text-shadow: none;">
 						\[\begin{split}\bar y_j(x,s) = &\sum_{q=1}^4 b_{q,j}(s) e^{r_{q,j}(s)x} + \frac{P e^{-s(x-x_p)/v}H(x-x_p)}{v\left( EI{(s/v)}^4 + ms^2 +C_j s + k_j \right)}\\ + &\begin{cases}
 								\frac{\mu_1(ms+C_j-vm\omega_1)}{EI\omega_1^4+ms^2+C_js+k_j}e^{\omega_1(x-x_p)} + \frac{\mu_2(ms+C_j-vm\omega_2)}{EI\omega_2^4+ms^2+C_js+k_j}e^{\omega_2(x-x_p)}, & x-x_p<0,\\ 
 								\frac{\mu_3(ms+C_j-vm\omega_3)}{EI\omega_3^4+ms^2+C_js+k_j}e^{\omega_3(x-x_p)} + \frac{\mu_4(ms+C_j-vm\omega_4)}{EI\omega_4^4+ms^2+C_js+k_j}e^{\omega_4(x-x_p)},& x-x_p>0,
@@ -127,88 +118,147 @@
 						</p>
 
 						<aside class="notes">
-							<ol>
-								<li>
-									Divide into smaller regions in which the equation is simpler. 
-								</li>
-								<li>
-									Apply the Laplace transform.
-								</li>
-								<li>
-									Use $e^{r(s)x}$ as an ansatz for the ODE in $x$.
-								</li>
-								<li>
-									Apply a numerical Laplace inversion algorithm.
-								</li>
-							</ol>
-
-						
-							Broadly speaking, there are these steps. Of these, the last two are the most interesting.
-						</aside>
-					</section>
-					
-					<section>
-
-						Since the equation has piecewise-constant coefficients, we split the solution domain:
-						<video data-autoplay loop controls src="Videos/0001-0090.mkv" style="border-radius: 2rem;"></video>
-						We can then assume continuity of the function and its first three derivatives across each boundary.
-
-						<aside class="notes">
-							We can split the solution domain at each of the transition zones, and at the point force (why will be clear later) then we solve an easier equation.
-							At each of the boundaries, we can apply matching conditions.
+							
+							Broadly speaking, there are four steps. Of these, the last two are the most interesting.
 						</aside>
 					</section>
 
-					<section>
-						In each region, we apply the Laplace transform:
-						<p style="font-size: 1rem;">
-						\[EI\partial_x^4 y + m\partial_t^2 y + C(x) \partial_t y + k(x)y = \delta(x-vt)\]
-						$\downarrow$
-							\[EI\partial_x^4 \bar{y} + \left[ms^2 + Cs + k\right] \bar{y} = \big[ ms+C(x) \big] y(x,0) + m\partial_t y(x,0) +  \frac{P}{v}e^{-s(x-x_p)/v}H(x-x_p)\]
+					<section data-auto-animate>
+						<h5>
+							Time-domain solution:
+						</h5>
+
+						<p data-id="LDS" style="font-size: 1rem; margin-top: 2rem; color: black; background-color: var(--r-main-color); padding: 1rem; border-radius: 1rem; text-shadow: none;">
+						\[\begin{split}\bar y_j(x,s) = &\sum_{q=1}^4 b_{q,j}(s) e^{r_{q,j}(s)x} + \frac{P e^{-s(x-x_p)/v}H(x-x_p)}{v\left( EI{(s/v)}^4 + ms^2 +C_j s + k_j \right)}\\ + &\begin{cases}
+								\frac{\mu_1(ms+C_j-vm\omega_1)}{EI\omega_1^4+ms^2+C_js+k_j}e^{\omega_1(x-x_p)} + \frac{\mu_2(ms+C_j-vm\omega_2)}{EI\omega_2^4+ms^2+C_js+k_j}e^{\omega_2(x-x_p)}, & x-x_p<0,\\ 
+								\frac{\mu_3(ms+C_j-vm\omega_3)}{EI\omega_3^4+ms^2+C_js+k_j}e^{\omega_3(x-x_p)} + \frac{\mu_4(ms+C_j-vm\omega_4)}{EI\omega_4^4+ms^2+C_js+k_j}e^{\omega_4(x-x_p)},& x-x_p>0,
+						\end{cases}\\ \end{split}\]
 						</p>
+						<p style="font-size: 1.5rem;">An analytical solution is not achievable (especially for arbitrarily many transition zones), so we use a numerical technique. Examples include:</p>
 
-						which results in an ODE in x that can be solved using undetermined coefficients.
-					
-						<aside class="notes">
-							Applying the Laplace transform takes us to an ODE in x, which can then be solved using the method of undetermined coefficients.
-							I consider both zero initial conditions and the travelling wave for a homogeneous beam. 
-						</aside>
-					</section>
+						<div style="display: grid; grid-template-columns: auto auto auto; justify-content: center;">
+							<div class="NILapExample">
+								<h2> Bromwich Contour</h2>
+								<p>Direct Quadrature</p>
+								<p>Talbot method</p>
+								<p>Fourier series</p>
 
-					<section>
-						The ODE can be solved using the ansatz $e^{r(s)x}$ which leads to the characteristic equation,
-						\[EIr^4 + (ms^2 + Cs + k) = 0\]
-						<div class = "fragment"> 
-						<p>
-							In general, we'd like to know two things:
-							<ul>
-								<li>
-									The multiplicity of the roots.
-								</li>
-								<li>
-									The sign of the real components of the roots.
-								</li>
-							</ul>
-						</p>
 							</div>
 
-						<aside class="notes">
-							Care must be taken here: we need to confirm that there are no double roots (which is easy here), and we also would like to know that there aren't imaginary roots: for complex roots we can confirm that they will decay at infinity.
-						</aside>
+							<div class="NILapExample">
+								<h2>Expansions</h2>
+								<p>Weeks' method</p>
+								<p>Schappery's method</p>
+								<p>Papoulis'  method</p>
+							</div>
+
+							<div class="NILapExample">
+								<h2>Post-Widder</h2>
+								<p>Gaver's method</p>
+								<p>Gaver-Stehfest</p>
+								<p>GWR</p>
+
+							</div>
+						</div>
+
 					</section>
 
 					<section>
-						Applying the method of undetermined coefficients to get the particular solutions associated with the point force and initial conditions, we get a general solution  in each region:
-						<p style="font-size: 1rem;">
-						\[\begin{split}\bar y_j(x,s) = &\sum_{q=1}^4 b_{q,j}(s) e^{r_{q,j}(s)x} + \frac{P e^{-s(x-x_p)/v}H(x-x_p)}{v\left( EI{(s/v)}^4 + ms^2 +C_j s + k_j \right)}\\ + &\begin{cases}
-								\frac{\mu_1(ms+C_j-vm\omega_1)}{EI\omega_1^4+ms^2+C_js+k_j}e^{\omega_1(x-x_p)} + \frac{\mu_2(ms+C_j-vm\omega_2)}{EI\omega_2^4+ms^2+C_js+k_j}e^{\omega_2(x-x_p)}, & x-x_p<0,\\ 
-								\frac{\mu_3(ms+C_j-vm\omega_3)}{EI\omega_3^4+ms^2+C_js+k_j}e^{\omega_3(x-x_p)} + \frac{\mu_4(ms+C_j-vm\omega_4)}{EI\omega_4^4+ms^2+C_js+k_j}e^{\omega_4(x-x_p)},& x-x_p>0,
-						\end{cases}\\ \end{split}\]
-						where $\mu_\Box$ and $\omega_\Box$ are coefficients related to the travelling wave solution.</p>
-					<div class = "fragment">
-						Applying continuity conditions results in a linear system for the unknown coefficients $b_{q,j}$.
-					</div>
+
+						<div class="InversionList">
+
+							<div>
+								<h2>
+									DQ
+								</h2>
+								<div>
+									<p>Pros:</p>
+									<ul>
+										<li>
+											Easily implemented.
+										</li>
+										<li>
+											Intuitive parameters (e.g. discretisation width).
+										</li>
+									</ul>
+
+									<p>Cons:</p>
+									<ul>
+										<li>
+											Computationally expensive.
+										</li>
+										<li>
+											Gibbs phenomenon at $t=0$.
+										</li>
+									</ul>
+
+								</div>
+								
+							</div>
+
+							<div>
+								<h2>
+									Weeks
+								</h2>
+								<div>
+
+									<p>Pros:</p>
+									<ul>
+										<li>
+											Low cost for large number of sampled times.
+										</li>
+										<li>
+											Accurate inversion at $t=0$.
+										</li>
+									</ul>
+									<p>Cons:</p>
+									<ul>
+										<li>
+											Expensive for fewer times.
+										</li>
+										<li>
+											Important but unintuitive parameters.
+										</li>
+									</ul>
+
+								</div>
+
+							</div>
+							
+							<div>
+								<h2>
+									GWR
+								</h2>
+								<div>
+
+									<p>Pros:</p>
+									<ul>
+										<li>
+											Only one, intuitive parameter.
+										</li>
+										<li>
+											Good convergence.
+										</li>
+									</ul>
+									
+									<p>
+										Cons:
+									</p>
+									<ul>
+										<li>
+											Requires arbitrary precision computing.
+										</li>
+										<li>
+											Cannot invert at $t=0$.
+										</li>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+
 					</section>
+		
 
 
 
@@ -218,16 +268,7 @@
 				<section>
 
 					<section>
-
-
-
-					</section>
-
-
-
-
-					<section>
-
+						<h5>The best I could do at first:</h5>
 						<div style=" display: flex; flex-direction: row; border-radius: 1rem; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto; width: fit-content; padding: 1.5rem; align-items: center;">
 
 							<div style=" display: flex; flex-direction: row; border-radius: 1rem; width: fit-content; padding: 1.5rem; align-items: center; background-color: white; border-radius: 2rem; height: fit-content; width: fit-content;" >
@@ -251,6 +292,48 @@
 						</div>
 
 						
+					</section>
+
+					<section>
+						
+						<div class="InversionList">
+
+							<div>
+								<h2>
+									DQ
+								</h2>
+									
+								<img src="Figures/General/Comparisons/DQ_Fast_steadyState_Comparison.svg">
+								
+							</div>
+
+							<div>
+								<h2>
+									Weeks
+								</h2>
+								
+								<img src = "Figures/General/Comparisons/Weeks_fast_steadyState_Comparison_NVals.svg">
+
+							</div>
+							
+							<div>
+								<h2>
+									GWR
+								</h2>
+
+								<img src="Figures/General/Comparisons/GWR_steadyState_Comparison_v30.svg">
+							</div>
+								
+						</div>
+
+						Comparisons of relative errors with $v=30$.
+
+					</section>
+						
+						
+
+					<section>
+						<img src="Figures/General/Demonstration_fast_GWR.svg" style="height: 30rem; padding: 0.5rem; background-color: white; border-radius: 1rem;">
 					</section>
 
 
