@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Josiah NSW ANZIAM 2025</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/blood.css">
+		<link rel="stylesheet" href="custom.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<p>Josiah Murray</p>
+					<h5 style="font-size: 3rem;">Infinite beams, undetermined coefficients, and the Laplace transform</h5>
+					<p style="margin-bottom: -1rem; font-size:x-large ;">Supervisors:</p>
+					<p style="font-size: xx-large; margin-bottom: 4rem;">Dr Ravi Pethiyagoda, Professor Mike Meylan, 
+						<br>Professor Natalie Thamwattana</p>
+					<div style=" display: flex; flex-direction: row; background-color: #ece9df; border-radius: 1rem; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto; height: fit-content; width: fit-content; padding: 1.5rem">
+						<img src="Figures/Logos/UON_Alternative.svg" style="height: 5rem; width: 5rem; margin: 1rem; ">
+						<div style="width: 4rem;"></div>
+						<img src="Figures/Logos/PC formatted Stacked ARC logo.svg" style="height: 5rem; margin-right: 1rem;">
+					</div>
+				</section>
+
+				<!--Context-->
+
+				<section>
+
+					<section>
+
+						<div style="display: grid; grid-auto-flow: column; align-items: center;">
+							<img src="Figures/General/Annotated Track structure diagram.png" style="border-radius: 1rem; background-color: #d5d3cb; height: 20rem;" >
+							<video data-autoplay controls loop src="Videos/Sweep to blueprint.mov" style="height: 20rem; width: auto; border-radius: 1rem;object-fit: cover;"></video>
+						</div>
+						<aside class="notes">
+							Give a brief overview of the railway context
+						</aside>
+
+					</section>
+
+					<section>
+						Euler-Bernoulli beam equation with viscoelastic foundation:
+						<span style="font-size: 2rem;">\[EI\partial_x^4 y + m\partial_t^2 y + C(x) \partial_t y + k(x)y = \delta(x-x_p-vt), \]</span>
+						where $C$ and $k$ are peicewise-constant functions and $v>0$.
+
+						<div style="display: grid; grid-auto-flow: column; align-items: center;">
+							<img src = "Figures/General/Beam on springs and dashpots - no infinity.png" style="background-color: var(--r-main-color); border-radius: 2rem;" >
+							<img src = "Figures/General/VariableStiffness3DRenderBevel.png" style="background-color: var(--r-main-color); border-radius: 2rem; border-width: 1rem; border-color: var(--r-main-color); border-style: solid;"> 
+						</div>
+						<aside class="notes">
+							Talk through the model briefly. Should the diagram move?
+						</aside>
+					</section>
+
+					<section>
+						Pictures of other applications
+
+						<aside class="notes">
+							But, of course, the same techniques I'll mention today can be applied (sometimes without modification) to various other applications
+						</aside>
+
+					</section>
+					
+
+
+				</section>
+
+				<!--Solution process-->
+				<section>
+					
+					<section>
+						<h5>To find the Laplace domain solution:</h5>
+						<div style="display: grid; grid-template-columns: auto auto auto auto; background-color: #d5d3cb; align-items: center; justify-content: center;">
+							<div style="width: 15rem; height: 15rem; background-color: red; text-align: center;">
+								<p style="font-size: 1.5rem;">1. Split domain</p>
+								<video data-autoplay loop controls src="Videos/0001-0090.mkv" style="border-radius: 1rem;"></video>
+							</div>
+
+							<div style="width: 15rem; height: 15rem; background-color: red; text-align: center; align-items: center;">
+								<p style="font-size: 1.5rem;">2. Apply Laplace transform</p>
+								<p style="font-size: 0.7rem; text-align: center;">
+						\[EI\partial_x^4 y + m\partial_t^2 y + C(x) \partial_t y + k(x)y = \delta(x-vt)\]
+						$\downarrow$
+							\[\begin{split}EI\partial_x^4 \bar{y} &+ \left[ms^2 + Cs + k\right] \bar{y} =\\ & \big[ ms+C(x) \big] y(x,0)\\ &+ m\partial_t y(x,0)\\ &+  \frac{P}{v}e^{-s(x-x_p)/v}H(x-x_p)\end{split}\]
+						</p>
+								
+							</div>
+
+							<div style="width: 15rem; height: 15rem; background-color: red; text-align: center;">
+								<p style="font-size: 1.5rem;">3. Solve ODE in $x$</p>
+								<p style="font-size: 1rem;"> 
+									Apply ansatz $e^{r(s)x}$ giving characteristic equation
+									\[EIr^4 + (ms^2 + Cs + k) = 0,\]
+									and search for particular solutions of the form 
+									$Ae^{B x}$
+								</p>
+								
+							</div>
+
+							<div style="width: 15rem; height: 15rem; background-color: red; text-align: center;">
+								<p style="font-size: 1.5rem;">4. Solve for unknown coefficients</p>
+								<p style="font-size: 1rem;"> 
+									Enforce continuity of function and derivatives in $x$. This results in a linear system for the unknown coefficients in each region.
+								</p>
+								
+							</div>
+							
+
+
+
+						</div>
+
+						
+						<p style="font-size: 1rem; margin-top: 2rem; color: black; background-color: var(--r-main-color); padding: 1rem; border-radius: 1rem; text-shadow: none;">
+						\[\begin{split}\bar y_j(x,s) = &\sum_{q=1}^4 b_{q,j}(s) e^{r_{q,j}(s)x} + \frac{P e^{-s(x-x_p)/v}H(x-x_p)}{v\left( EI{(s/v)}^4 + ms^2 +C_j s + k_j \right)}\\ + &\begin{cases}
+								\frac{\mu_1(ms+C_j-vm\omega_1)}{EI\omega_1^4+ms^2+C_js+k_j}e^{\omega_1(x-x_p)} + \frac{\mu_2(ms+C_j-vm\omega_2)}{EI\omega_2^4+ms^2+C_js+k_j}e^{\omega_2(x-x_p)}, & x-x_p<0,\\ 
+								\frac{\mu_3(ms+C_j-vm\omega_3)}{EI\omega_3^4+ms^2+C_js+k_j}e^{\omega_3(x-x_p)} + \frac{\mu_4(ms+C_j-vm\omega_4)}{EI\omega_4^4+ms^2+C_js+k_j}e^{\omega_4(x-x_p)},& x-x_p>0,
+						\end{cases}\\ \end{split}\]
+						</p>
+
+						<aside class="notes">
+							<ol>
+								<li>
+									Divide into smaller regions in which the equation is simpler. 
+								</li>
+								<li>
+									Apply the Laplace transform.
+								</li>
+								<li>
+									Use $e^{r(s)x}$ as an ansatz for the ODE in $x$.
+								</li>
+								<li>
+									Apply a numerical Laplace inversion algorithm.
+								</li>
+							</ol>
+
+						
+							Broadly speaking, there are these steps. Of these, the last two are the most interesting.
+						</aside>
+					</section>
+					
+					<section>
+
+						Since the equation has piecewise-constant coefficients, we split the solution domain:
+						<video data-autoplay loop controls src="Videos/0001-0090.mkv" style="border-radius: 2rem;"></video>
+						We can then assume continuity of the function and its first three derivatives across each boundary.
+
+						<aside class="notes">
+							We can split the solution domain at each of the transition zones, and at the point force (why will be clear later) then we solve an easier equation.
+							At each of the boundaries, we can apply matching conditions.
+						</aside>
+					</section>
+
+					<section>
+						In each region, we apply the Laplace transform:
+						<p style="font-size: 1rem;">
+						\[EI\partial_x^4 y + m\partial_t^2 y + C(x) \partial_t y + k(x)y = \delta(x-vt)\]
+						$\downarrow$
+							\[EI\partial_x^4 \bar{y} + \left[ms^2 + Cs + k\right] \bar{y} = \big[ ms+C(x) \big] y(x,0) + m\partial_t y(x,0) +  \frac{P}{v}e^{-s(x-x_p)/v}H(x-x_p)\]
+						</p>
+
+						which results in an ODE in x that can be solved using undetermined coefficients.
+					
+						<aside class="notes">
+							Applying the Laplace transform takes us to an ODE in x, which can then be solved using the method of undetermined coefficients.
+							I consider both zero initial conditions and the travelling wave for a homogeneous beam. 
+						</aside>
+					</section>
+
+					<section>
+						The ODE can be solved using the ansatz $e^{r(s)x}$ which leads to the characteristic equation,
+						\[EIr^4 + (ms^2 + Cs + k) = 0\]
+						<div class = "fragment"> 
+						<p>
+							In general, we'd like to know two things:
+							<ul>
+								<li>
+									The multiplicity of the roots.
+								</li>
+								<li>
+									The sign of the real components of the roots.
+								</li>
+							</ul>
+						</p>
+							</div>
+
+						<aside class="notes">
+							Care must be taken here: we need to confirm that there are no double roots (which is easy here), and we also would like to know that there aren't imaginary roots: for complex roots we can confirm that they will decay at infinity.
+						</aside>
+					</section>
+
+					<section>
+						Applying the method of undetermined coefficients to get the particular solutions associated with the point force and initial conditions, we get a general solution  in each region:
+						<p style="font-size: 1rem;">
+						\[\begin{split}\bar y_j(x,s) = &\sum_{q=1}^4 b_{q,j}(s) e^{r_{q,j}(s)x} + \frac{P e^{-s(x-x_p)/v}H(x-x_p)}{v\left( EI{(s/v)}^4 + ms^2 +C_j s + k_j \right)}\\ + &\begin{cases}
+								\frac{\mu_1(ms+C_j-vm\omega_1)}{EI\omega_1^4+ms^2+C_js+k_j}e^{\omega_1(x-x_p)} + \frac{\mu_2(ms+C_j-vm\omega_2)}{EI\omega_2^4+ms^2+C_js+k_j}e^{\omega_2(x-x_p)}, & x-x_p<0,\\ 
+								\frac{\mu_3(ms+C_j-vm\omega_3)}{EI\omega_3^4+ms^2+C_js+k_j}e^{\omega_3(x-x_p)} + \frac{\mu_4(ms+C_j-vm\omega_4)}{EI\omega_4^4+ms^2+C_js+k_j}e^{\omega_4(x-x_p)},& x-x_p>0,
+						\end{cases}\\ \end{split}\]
+						where $\mu_\Box$ and $\omega_\Box$ are coefficients related to the travelling wave solution.</p>
+					<div class = "fragment">
+						Applying continuity conditions results in a linear system for the unknown coefficients $b_{q,j}$.
+					</div>
+					</section>
+
+
+
+				</section>
+
+				<!--Results-->
+				<section>
+
+					<section>
+
+
+
+					</section>
+
+
+
+
+					<section>
+
+						<div style=" display: flex; flex-direction: row; border-radius: 1rem; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto; width: fit-content; padding: 1.5rem; align-items: center;">
+
+							<div style=" display: flex; flex-direction: row; border-radius: 1rem; width: fit-content; padding: 1.5rem; align-items: center; background-color: white; border-radius: 2rem; height: fit-content; width: fit-content;" >
+								<div style="display: flex; flex-direction: column;">
+									<img src="Videos/OneTZSlow.gif" style="width: 18vw; border-radius: 1rem;">
+									<p style="color: black; font-size: medium; margin-top: -1rem;text-shadow: none;">$v=1\,\text{m/s}$</p>
+								</div>
+								<div style="display: flex; flex-direction: column;">
+									<img src="Videos/4TZ_slow.gif" style="width: 18vw; border-radius: 1rem;">
+									<p style="color: black; font-size: medium; margin-top: -1rem;text-shadow: none;">$v=1\,\text{m/s}$</p>
+								</div>
+								
+								<div style="display: flex; flex-direction: column;">
+									<img src="Videos/FastNoTZ.gif" style="width: 18vw;">
+									<p style="color: black; font-size: medium; margin-top: -1rem; text-shadow: none;">$v=30\,\text{m/s}$</p>
+								</div>
+								
+								
+							</div>
+							
+						</div>
+
+						
+					</section>
+
+
+
+				</section>
+
+
+
+				<!--Looking forwards--> 				
+				<section>
+					<section>
+						
+						<img src="Figures/General/Transition zone feedback loop.png" style="border-radius: 1rem; height: fit-content; margin-bottom: 0;">
+						<div class="citation">
+							<ul>
+								<li>
+									Based on a figure from:
+									Indraratna, B., Babar Sajjad, M., Ngo, T., Gomes Correia, A., & Kelly, R. (2019). Improved performance of ballasted tracks at transition zones: A review of experimental and modelling approaches. Transportation Geotechnics, 21, 100260. https://doi.org/10.1016/j.trgeo.2019.100260
+								</li>
+							</ul>
+
+						</div>
+					</section>
+					
+				</section>
+				<!--Extra stuff-->
+				<section data-background-video="Videos/AmbientRailLoop.mov" data-background-video-loop data-background-video-muted>
+					<div style="width: fit-content; background-color: var(--r-background-color); padding: 1rem; border-radius: 1rem; border-width: 0.2rem; border-style: solid; border-color: var(--r-main-color); position: absolute; bottom: -30rem; left: 2rem;">
+						<p style="font-size: large;">
+						This research was supported by the Australian Government through the ARC's
+						Discovery Projects funding scheme (project DP22010286). The views expressed herein are those of the
+						authors and are not necessarily those of the Australian Government or the ARC.
+					</p>
+					</div>
+					
+					
+				</section>
+			</div>
+		</div>
+
+		
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealMath.MathJax3, RevealNotes]
+			});
+		</script>
+	</body>
+</html>
