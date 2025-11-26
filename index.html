@@ -268,42 +268,68 @@
 				<section>
 
 					<section>
-						<h5>The best I could do at first:</h5>
+						<h5 style="font-size: 2rem;">Weeks' method works well for low speeds:</h5>
 						<div style=" display: flex; flex-direction: row; border-radius: 1rem; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto; width: fit-content; padding: 1.5rem; align-items: center;">
 
 							<div style=" display: flex; flex-direction: row; border-radius: 1rem; width: fit-content; padding: 1.5rem; align-items: center; background-color: white; border-radius: 2rem; height: fit-content; width: fit-content;" >
 								<div style="display: flex; flex-direction: column;">
 									<img src="Videos/OneTZSlow.gif" style="width: 18vw; border-radius: 1rem;">
-									<p style="color: black; font-size: medium; margin-top: -1rem;text-shadow: none;">$v=1\,\text{m/s}$</p>
+									<p style="color: black; font-size: medium; margin-top: -1rem;text-shadow: none;">
+										$v=1\,\text{m/s}$ <span style="font-size: 1.3rem; color: green">&#10004</span>
+									</p>
 								</div>
 								<div style="display: flex; flex-direction: column;">
 									<img src="Videos/4TZ_slow.gif" style="width: 18vw; border-radius: 1rem;">
-									<p style="color: black; font-size: medium; margin-top: -1rem;text-shadow: none;">$v=1\,\text{m/s}$</p>
+									<p style="color: black; font-size: medium; margin-top: -1rem;text-shadow: none;">
+										$v=1\,\text{m/s}$ <span style="font-size: 1.3rem; color: green">&#10004</span>
+									</p>
 								</div>
 								
 								<div style="display: flex; flex-direction: column;">
 									<img src="Videos/FastNoTZ.gif" style="width: 18vw;">
-									<p style="color: black; font-size: medium; margin-top: -1rem; text-shadow: none;">$v=30\,\text{m/s}$</p>
+									<p style="color: black; font-size: medium; margin-top: -1rem; text-shadow: none;">
+										$v=30\,\text{m/s}$ <span style="color: red; font-size: 1.2rem;">&#10008</span>
+									</p>
 								</div>
 								
 								
 							</div>
 							
 						</div>
+						<div class="AnimLegend" style="width: 40rem; height: 4rem; background-color: var(--r-main-color); margin-left: auto; margin-right: auto; border-radius: 1rem;
+						display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 1rem;">
+						
+						<div style="width: 3rem; height: 0rem; border-top: 0.2rem solid #803366; margin-right:0.5rem;">
+						</div>
+						<p style="font-size: 1rem; text-shadow: none; color: black; font-weight: bold;">Beam deformation</p>
+
+						<div style="width:2rem;"></div>
+						
+						<div style="width: 3rem; height: 0rem; border-top: 0.2rem dashed black;">
+						</div>
+						<p style="font-size: 1rem; text-shadow: none; color: black; font-weight: bold; margin-left: 0rem;">Travelling wave solution</p>
+
+						
+
+						
+
+						</div>
 
 						
 					</section>
 
 					<section>
+						<h5 style="font-size: 2rem;">GWR gives gives much better convergence vs. computation time:</h5>
 						
 						<div class="InversionList">
+
 
 							<div>
 								<h2>
 									DQ
 								</h2>
 									
-								<img src="Figures/General/Comparisons/DQ_Fast_steadyState_Comparison.svg">
+								<img src="Figures/General/Comparisons/SCALED - DQ_Fast_steadyState_Comparison.svg">
 								
 							</div>
 
@@ -312,7 +338,7 @@
 									Weeks
 								</h2>
 								
-								<img src = "Figures/General/Comparisons/Weeks_fast_steadyState_Comparison_NVals.svg">
+								<img src = "Figures/General/Comparisons/SCALED - Weeks_fast_steadyState_Comparison_NVals.svg">
 
 							</div>
 							
@@ -321,44 +347,57 @@
 									GWR
 								</h2>
 
-								<img src="Figures/General/Comparisons/GWR_steadyState_Comparison_v30.svg">
+								<img src="Figures/General/Comparisons/SCALED - GWR_steadyState_Comparison_v30.svg">
 							</div>
 								
 						</div>
 
-						Comparisons of relative errors with $v=30$.
+						<p style="font-size: 2rem;" >Comparison of relative L2 errors in $x$ over time, when recovering the travelling wave solution for $v=30\,\text{m/s}$.  </p>
 
 					</section>
 						
 						
 
 					<section>
-						<img src="Figures/General/Demonstration_fast_GWR.svg" style="height: 30rem; padding: 0.5rem; background-color: white; border-radius: 1rem;">
-					</section>
 
+						<div style="display: flex; flex-direction: row; align-items: center;">
 
+							<div style="align-items: center;">
+								<p style=" width:25rem; font-size: 1.4rem; margin-bottom:0.5rem; text-align: center; margin-right: auto; margin-left: auto;">
+									Travelling wave successfully recovered for $v=30\,\text{m/s}$ using GWR:
+								</p>
+								<img src="Figures/General/Demonstration_fast_GWR.svg" style="height: 27rem; padding: 0.5rem; background-color: white; border-radius: 1rem;">
 
-				</section>
+							</div>
+							<div style="width:8rem"></div>
 
-
-
-				<!--Looking forwards--> 				
-				<section>
-					<section>
-						
-						<img src="Figures/General/Transition zone feedback loop.png" style="border-radius: 1rem; height: fit-content; margin-bottom: 0;">
-						<div class="citation">
-							<ul>
-								<li>
-									Based on a figure from:
-									Indraratna, B., Babar Sajjad, M., Ngo, T., Gomes Correia, A., & Kelly, R. (2019). Improved performance of ballasted tracks at transition zones: A review of experimental and modelling approaches. Transportation Geotechnics, 21, 100260. https://doi.org/10.1016/j.trgeo.2019.100260
-								</li>
-							</ul>
+							<div>
+								<h5>Main points:</h5>
+								<ul class="SpacedList"style="font-size: 1.5rem;">
+									<li>
+										To solve piecewise-constant beam equation:
+										split solution domain $\to$ Laplace transform $\to$ undetermined coefficients 
+									</li>
+									<li>
+										Direct quadrature method is robust and accessible.
+									</li>
+									<li>
+										Weeks' method is great for small velocities and generating animations.
+									</li>
+									<li>
+										GWR gives the best convergence, especially at larger velocities.
+									</li>
+								</ul>
+							</div>
 
 						</div>
+						
 					</section>
-					
+
+
+
 				</section>
+
 				<!--Extra stuff-->
 				<section data-background-video="Videos/AmbientRailLoop.mov" data-background-video-loop data-background-video-muted>
 					<div style="width: fit-content; background-color: var(--r-background-color); padding: 1rem; border-radius: 1rem; border-width: 0.2rem; border-style: solid; border-color: var(--r-main-color); position: absolute; bottom: -30rem; left: 2rem;">

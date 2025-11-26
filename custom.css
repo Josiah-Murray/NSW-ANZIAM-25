@@ -81,8 +81,23 @@
     font-size: 2rem;
 }
 .InversionList div img {
-    max-width: 20rem;
+    max-width: 23rem;
+    width: 23rem;
     border-radius: 1rem;
     padding: 0.5rem;
     background-color: white;
+}
+
+.InversionList div h2 {
+    font-size: 2rem;
+    margin-bottom: 0.1rem;
+}
+
+.AnimLegend div{
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+}
+
+.SpacedList li {
+    margin-bottom: 1rem;
 }
